@@ -5,6 +5,6 @@ from .import models
 
 class FormAluno(forms.ModelForm):
 
-        class Meta:
-              model = models.Aluno
-              fields = "__all__" 
+      class Meta:
+            model = models.Aluno
+            fields = "__all__"

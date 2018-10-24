@@ -1,28 +1,44 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h1>Lista de Alunos</h1>
 
 <table class="table">
         <thead class="thead-dark">
                 <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">CPF</th>
                         <th scope="col">Data Nascimento</th>
                         <th scope="col">Endereco</th>
                         <th scope="col">Telefone</th>
                         <th scope="col">Curso</th>
+                        <th scope="col"></th>
                 </tr>
         </thead>
         <tbody>
                 {% for Aluno in object_list %}
                 <tr>
+                        <td>{{ Aluno.id }}</td>
                         <td>{{ Aluno.nome }}</td>
                         <td>{{ Aluno.cpf }}</td>
                         <td>{{ Aluno.data_nasc |date:"d/m/Y" }}</td>
                         <td>{{ Aluno.endereco }}</td>
                         <td>{{ Aluno.telefone }}</td>
                         <td>{{ Aluno.curso }}</td>
+                        <td>
+                                <form action="{% url 'deleta' Aluno.id %}" method="POST" class="form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="aluno-id" value="{{Aluno.id}}" />
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                        </td>
+                        <td>
+                                        <form action="{% url 'altera' Aluno.id %}" method="POST" class="form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="aluno-id" value="{{Aluno.id}}" />
+                                                <button type="submit" class="btn btn-warning">Altera</button>
+                                        </form>
+                                </td>
                 </tr>
                 {% empty %}
                 <li>Sem itens na lista.</li>
