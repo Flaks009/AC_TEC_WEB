@@ -5,7 +5,7 @@ from django.utils.formats import date_format
 class Aluno(models.Model):
 
     nome = models.CharField("Nome", max_length=100)
-    cpf = models.CharField("CPF", max_length=14)
+    cpf = models.CharField("CPF", max_length=11)
     data_nasc = models.DateField("Data de Nascimento")
     endereco = models.CharField("Endereço", max_length=150)
     telefone = models.CharField("Telefone", max_length=11)

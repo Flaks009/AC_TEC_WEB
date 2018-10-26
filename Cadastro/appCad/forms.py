@@ -7,4 +7,4 @@ class FormAluno(forms.ModelForm):
 
       class Meta:
             model = models.Aluno
-            fields = "__all__"
+            fields = ['nome','cpf','data_nasc','endereco','telefone', 'curso']
