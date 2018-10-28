@@ -10,13 +10,14 @@ from appCad.forms import FormAluno
 from django.http import HttpResponse
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
+
 def home(request):
         return render(request,'index.html')
 
 class Criar(CreateView):
+        form_class = FormAluno
         template_name = 'cadastro.html'
         model = Aluno
-        fields = "__all__" 
         success_url = reverse_lazy('lista')
 
 class Lista(ListView):
@@ -26,6 +27,7 @@ class Lista(ListView):
         fields = "__all__"
 
 class DeletaAluno(DeleteView):
+        form_class = FormAluno
         model = Aluno
         success_url = reverse_lazy('lista')
 
