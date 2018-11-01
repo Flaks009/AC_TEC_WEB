@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Lista de Disciplinas</h1>
+
+<table class="table" id="table1">
+        <thead class="thead-dark">
+                <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Professor Responsável</th>
+                        <th scope="col">Carga Horária</th>
+                        <th scope="col">Cordenador</th>
+                        <th scope="col">Conteúdo Programático</th>
+                        <th scope="col">Cursos Ministrados</th>
+                        <th scope="col"></th>
+                </tr>
+        </thead>
+        <tbody>
+                {% for Disciplina in object_list %}
+                <tr>
+                        <td>{{ Disciplina.id }}</td>
+                        <td>{{ Disciplina.nome }}</td>
+                        <td>{{ Disciplina.profresp}}</td>
+                        <td>{{ Disciplina.carga }}</td>
+                        <td>{{ Disciplina.coordenador }}</td>
+                        <td>{{ Disciplina.conteudo }}</td>
+                        <td>{{ Disciplina.curso }}</td>
+                        <td>
+                                <form action="{% url 'deleta-disciplina' Disciplina.id %}" method="POST" class="form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="disciplina-id" value="{{Disciplinas.id}}" />
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                        </td>
+                        <td>
+                                        <form action="{% url 'altera-disciplina' Disciplina.id %}" method="POST" class="form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="disciplina-id" value="{{Disciplina.id}}" />
+                                                <button type="submit" class="btn btn-warning">Altera</button>
+                                        </form>
+                                </td>
+                </tr>
+                {% empty %}
+                <li>Sem itens na lista.</li>
+                {% endfor %}
+        </tbody>
+</table>
+{% endblock content %}

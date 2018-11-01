@@ -3,16 +3,33 @@
 {% block content %}
 <div class="container">
         <div class="jumbotron">
-                <h1 class="display-4 text-center">Cadastro de Alunos</h1>
-                <p class="lead text-center">Sistema Django para cadastro de alunos conforme Atividade contínua 09</p>
+                <h1 class="display-4 text-center">Cadastros</h1>
+                <p class="lead text-center">Sistema Django para cadastro de alunos conforme Atividade contínua 10</p>
                 <hr class="my-4">
                 <div class="row">
                         <p class="lead text-center">
-                                <a class="btn btn-info btn-lg" href="{% url 'cadastro' %}" role="button">Cadastrar</a>
+                                <a class="btn btn-info btn-lg" href="{% url 'cadastro' %}" role="button">Cadastrar
+                                        Aluno</a>
                                 <a class="btn btn-info btn-lg" href="{% url 'lista' %}" role="button">Lista de
-                                        Cadastro</a>
+                                        Cadastro de Alunos</a>
                         </p>
                 </div>
+                <div class="row">
+                        <p class="lead text-center">
+                                <a class="btn btn-info btn-lg" href="{% url 'cadastro-prof' %}" role="button">Cadastrar
+                                        Professor</a>
+                                <a class="btn btn-info btn-lg" href="{% url 'lista-prof' %}" role="button">Lista de
+                                        Cadastro de Professores</a>
+                        </p>
+                </div>
+                <div class="row">
+                                <p class="lead text-center">
+                                        <a class="btn btn-info btn-lg" href="{% url 'cadastro-disciplina' %}" role="button">Cadastrar
+                                                Disciplina</a>
+                                        <a class="btn btn-info btn-lg" href="{% url 'lista-disciplina' %}" role="button">Lista de
+                                                Cadastro de Disciplina</a>
+                                </p>
+                        </div>
         </div>
 </div>
 {% endblock content %}
